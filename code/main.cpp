@@ -42,7 +42,7 @@ string usage() {
             << " IsoTree Usage " << endl
             << "===============================================================================" << endl
             << " ** Options: **" <<endl
-            << "  -k <int>: length of kmer, default 25. " << endl
+            << "  -k <int>: length of kmer, default 21. " << endl
             << "  -o <string>: output directory. " << endl
             << "  -p : paired-end reads. " << endl
             << "  -t <string>: type of file, fa or fq. " << endl
@@ -148,10 +148,12 @@ int main(int argc, char* argv[]){
  string file_name =out_dir+"/FC_strains_contig.fa";
      fstream GAP_file;
      GAP_file.open(file_name.c_str(), fstream::out);
-     GAP_file<<"+FC_contig"<<endl;
      string contig_r=Extend_R(g_kmer_length,seed,had_used_read);
+     cout<<"当前右侧contig为"<<contig_r<<endl;
     string contig_l=Extend_L(g_kmer_length,seed,had_used_read);
+    cout<<"当前左侧contig为"<<contig_l<<endl;
        string contig_exr=final_contig(g_kmer_length,contig_r);
+       cout<<"拼接后右侧contig为"<<contig_exr<<endl;
     if(dep_search==2){
         contig=contig_exr;
         GAP_file<<contig<<endl;
@@ -161,6 +163,7 @@ int main(int argc, char* argv[]){
         return 1;
     }
     string Contig_Ex_L = final_contig_Left(g_kmer_length,contig_l);
+    cout<<"拼接后左侧contig为"<<Contig_Ex_L<<endl;    
     contig=Contig_Ex_L+contig_exr;
     cout<<"contig："<<contig<<endl;
     GAP_file<<">contig"<<endl;

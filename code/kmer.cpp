@@ -39,7 +39,7 @@ bool Find_peak(int kmer_length) {
       max_kmerfre = it->second;
     }
   }
-
+  cout << max_kmerfre << "is max_kmer_fre" << endl;
 
   int count_kmer[max_kmerfre] = {0};
 
@@ -67,6 +67,7 @@ bool Find_peak(int kmer_length) {
     }
   }
   Seq_Dep = Seq_Dep / U;
+  cout << "Seq dep is" << Seq_Dep << endl;
 
   int peak[max_kmerfre] = {0};
 
@@ -92,7 +93,7 @@ bool Find_peak(int kmer_length) {
     }
   }
 
-
+  cout<<"1"<<endl;
 
   for (int i = mark; i >= 0; i -= step_length) {
     dep_judge = 0;
@@ -115,10 +116,10 @@ bool Find_peak(int kmer_length) {
           j -= step_length;
         }
       }
+      cout<<"2"<<endl;
 
 
-
-
+      //debug
       if(2*j-max_kmerfre>0){
         j=j-(max_kmerfre-j);
       }
@@ -126,19 +127,20 @@ bool Find_peak(int kmer_length) {
       int judge = 0;
       int kmer_dep = Seq_Dep * U;
 
-
+      // 1
       first_p = j;
       second_p = max_kmerfre;
       dep_search = 0;
       int find_peak_right_num = 0;
-
+      // 2
 
       for (int ii = j; ii <= max_kmerfre-1; ii++) {
-
+        //debug
         if(count_kmer[ii]>500){
-          cout<<"error!"<<ii<<endl;
+          cout<<"异常区间"<<ii<<endl;
           cout<<count_kmer[ii]<<endl;
         }
+        //debug
 
 
 
@@ -155,13 +157,19 @@ bool Find_peak(int kmer_length) {
       avr_kmer_dep = avr_kmer_dep / kmer_map.size();
       cout << " avr_kmer_dep" << avr_kmer_dep << endl;
 
+      cout<<"4"<<endl;
 
 
+     ////这个值需要具体重新算一下
+
+     cout<<"计算最后一个峰区间起始位置"<<j<<endl;
       if (j > avr_kmer_dep*g_re_gene)
         dep_search = 2;
 
 
 
+      cout<<"选取到的k-mer数量"<<dep_judge<<endl;
+      cout<<"总共数量"<<kmer_dep<<endl;
       while (dep_judge < kmer_dep * g_com_kmer_ratio && first_p > 2 &&
              find_peak_right_num < g_window_length) {
         first_p = first_p - 1;
@@ -170,7 +178,12 @@ bool Find_peak(int kmer_length) {
           find_peak_right_num++;
         }
       }
+      cout<<"最终取得的起始位置"<<first_p<<endl;
+      cout<<"5"<<endl;
+      // 算平均k-mer厚度，j是否大于平均k-mer厚度的二倍
 
+
+      cout<<"取得的dep_search状态"<<dep_search<<endl;
 
 
 
@@ -192,7 +205,7 @@ void get_kmer(int kmer_length) {
   }
 
   for (int num = 0; num < data_str.size(); num++) {
-
+    // cout<<"kmer"<<endl;
     const string &read = data_str[num];
     {
       if (read.length() < kmer_length)
