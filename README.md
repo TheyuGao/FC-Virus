@@ -1,45 +1,68 @@
-Welcome to FC-Viurs, an algorithmic software for full-length genome assembly for viruses.
-The package contains binary files that can be run directly.
+# FC-Virus
 
-Requirements
-Linux operating system
-c++11 or higher
+Welcome to **FC-Virus**!  
+FC-Virus is a powerful tool designed for full-length virus genome assembly. The package includes precompiled binaries for direct execution.
 
-Usage
-1. Download FC-Viurs
-www.github.con/FC-Virus download zip file or download directly
-Clone the repository:
+### Requirements:
+- Operating System: Linux
+- C++ Standard: C++11 or higher
+
+### Installation Instructions:
+You can install FC-Virus using one of the following methods:
+
+1. **Install via Bioconda**:  
+   Simply run the following command:
+    ```bash
+   bioconda install FC-Virus
+     ```
+
+3. **Use Precompiled Binaries**:  
+   Download FC-Virus from GitHub or clone the repository:
+    ```bash
+   git clone https://github.com/TheyuGao/FC-Virus.git
+    ```
+   Ensure you have unzip installed. Unzip the downloaded file:
    ```bash
-    "git clone https://github.com/TheyuGao/FC-Virus.git"
-2. Unzip the FC-Virus package (make sure you have unzip installed)  
- Execute the command in the FC-Virus download directory  
-    "unzip -l FC-Virus-master.zip"  
-3.install FC-Virus  
-Generally speaking, FC-Virus can be installed using the Make command.  
-First, go to the FC-Virus directory:  
-    "cd /path/in/FC-Virus"  
-Then install  
-    "make"  
-4.Add environment variables  
- if you want to run FC-Virus in any directory, add environment variables.  
-    "nano ~/.bashrc"  
-    "export PATH="$PATH:/path/to/your/project/bin""  
-    "source ~/.bashrc"  
-   
-5. Run FC-Virus (requires std=c++11)  
-If you want to skip or run FC-Virus directly after completing the above step4  
-"cd FC-Virus/bin"  
-"FC-Virus" or "./FC-Virus"  
-For novice users, we recommend you to run our binary file "FC_Virus" directly.  
-in the directory /your PATH/FC-Virus/bin  
-". /FC-Viurs -o PATH(your/output/path) -k k_number(default 25) --left PATH(/your/fq_1/file) --right PATH(/your/fq_2/file) -fr fr_number(1, 2or3) "  
-  
-For those of you who have other needs, we recommend that you compile and run it directly,The source code is stored in /FC_Virus/code.  
-  
-g++ -o FC-Virus -std=c++11 main.cpp GeneralSet.cpp kmer.cpp ex_r.cpp ex_l.cpp  
-  
-Example  
-". /FC-Viurs -o test -k 25 --left . /test/fq1.fastq --right . /test/fq2.fastq --fr2"  
-  
-The contig results are output in the specified -o output path, named "FC_contig.fa".  
-  
+   unzip FC-Virus-master.zip
+   ```
+   Navigate to the FC-Virus directory:
+   ```bash 
+   cd /path/to/FC-Virus
+   ```
+   Install by running:
+   ```bash 
+   `make`
+   ```
+   Set Up Environment Variables: To run FC-Virus from any directory, add it to your PATH:
+   ```bash 
+   nano ~/.bashrc
+   ```
+   Add the following line:
+   ```bash 
+   export PATH="$PATH:/path/to/FC-Virus/bin"
+   ```
+   Apply the changes with:
+   ```bash 
+   source ~/.bashrc
+   ```
+
+5. **Compile from Source**:  
+   To compile from source, navigate to the code directory:
+   ```bash 
+   cd /path/to/FC-Virus/code
+   ```
+   Compile using g++:
+   ```bash 
+   g++ -o FC-Virus -std=c++11 main.cpp GeneralSet.cpp kmer.cpp ex_r.cpp ex_l.cpp
+   ```
+   Then run FC-Virus:
+   ```bash 
+   ./FC-Virus -o /path/to/output -k 25 --left /path/to/left.fq --right /path/to/right.fq
+   ```
+
+### Example Command:
+```bash 
+./FC-Virus -o test -k 25 --left /path/to/test/fq1.fastq --right /path/to/test/fq2.fastq
+```
+
+The contig results will be saved to the specified output path as `FC_contig.fa`.
