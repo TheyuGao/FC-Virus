@@ -8,10 +8,10 @@ FC-Virus is a powerful tool designed for full-length virus genome assembly. The 
 - C++ Standard: C++11 or higher
 
 ### Installation Instructions:
-We have submitted the bioconda go-live application, please stay tuned.
-Once it’s approved, you’ll be able to install it using the following command:
+You can install FC-Virus in the following ways:  
 1. **Install via Bioconda**:  
-   Simply run the following command:
+   We have submitted the bioconda go-live application, please stay tuned.
+Once it’s approved, you’ll be able to install it using the following command:
     ```bash
    bioconda install FC-Virus
      ```
